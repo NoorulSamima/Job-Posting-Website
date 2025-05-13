@@ -7,10 +7,10 @@ services:
     startCommand: "python app.py"
     envVars:
       - key: DB_HOST
-        value: your-db-host
+        value: b3uxucvu3k8kmmkfioxq-mysql.services.clever-cloud.com
       - key: DB_USER
-        value: your-db-user
+        value: uadlmjzn5nqozjaa
       - key: DB_PASS
-        value: your-db-password
+        value: o17MyERJeoAR7sPAromA
       - key: DB_NAME
-        value: your-db-name
+        value: b3uxucvu3k8kmmkfioxq
