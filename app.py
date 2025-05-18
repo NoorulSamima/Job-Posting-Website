@@ -13,15 +13,45 @@ def get_db_connection():
         port=int(os.environ.get('DB_PORT', 3306))
     )
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
+    title = request.args.get('title', '').strip()
+    location = request.args.get('location', '').strip()
+    job_type = request.args.get('job_type', '').strip()
+    slider_value = request.args.get('salary', type=int)
+
+    salary_in_rs = slider_value * 100000 if slider_value else None
+
+    query = "SELECT * FROM jobs WHERE 1=1"
+    params = []
+
+    if title:
+        query += " AND LOWER(job_title) LIKE %s"
+        params.append(f"%{title.lower()}%")
+
+    if location:
+        query += " AND LOWER(location) LIKE %s"
+        params.append(f"%{location.lower()}%")
+
+    if job_type:
+        query += " AND job_type = %s"
+        params.append(job_type)
+
+    if salary_in_rs:
+        query += " AND %s BETWEEN salary_min AND salary_max"
+        params.append(salary_in_rs)
+
+    query += " ORDER BY id DESC"
+
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM jobs ORDER BY id DESC")
+    cursor.execute(query, tuple(params))
     jobs = cursor.fetchall()
     cursor.close()
     conn.close()
-    return render_template("index.html", jobs=jobs)
+
+    return render_template("index.html", jobs=jobs, slider_value=slider_value)
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
