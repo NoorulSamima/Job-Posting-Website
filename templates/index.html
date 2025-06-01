@@ -25,9 +25,11 @@
 
         .filter-bar {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 16px;
+            /* border-radius: 16px; */
             padding: 1rem;
+            margin-left: -70px;
             background-color: #fff;
+            width: 1250px;
         }
 
         .modal-content {
@@ -35,12 +37,13 @@
         }
 
         #navbar {
-            width: 1000px;
+            width: 850px;
             text-align: center;
-            margin-left: 170px;
+            /* margin-left: 170px; */
             margin-top: 20px;
-            border-radius: 25px;
+            border-radius: 35px;
             padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         #space {
@@ -67,6 +70,7 @@
 
         #sizej {
             font-size: medium;
+            font-weight: 750;
         }
 
         #salary-slider {
@@ -122,25 +126,32 @@
             margin-right: 40px;
         }
 
+        #font_size_change {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
     </style>
 </head>
 
 <body class="bg-light">
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container-fluid">
-            <img src="\static\media\download.jpg" alt="" height="30px" width="30px">
-            <a class="navbar-brand" href="#">Home</a>
-            <a class="navbar-brand" href="#">Find Jobs</a>
-            <a class="navbar-brand" href="#">Find Talents</a>
-            <a class="navbar-brand" href="#">About Us</a>
-            <a class="navbar-brand" href="#">Testimonials</a>
-            <div class="d-flex">
-                <button id="navbutton" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#createJobModal">Create
-                    Jobs</button>
+    <center>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container-fluid">
+                <img src="\static\media\download.jpg" alt="" height="30px" width="30px">
+                <a class="navbar-brand" href="#" id="font_size_change">Home</a>
+                <a class="navbar-brand" href="#" id="font_size_change">Find Jobs</a>
+                <a class="navbar-brand" href="#" id="font_size_change">Find Talents</a>
+                <a class="navbar-brand" href="#" id="font_size_change">About Us</a>
+                <a class="navbar-brand" href="#" id="font_size_change">Testimonials</a>
+                <div class="d-flex">
+                    <button id="navbutton" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#createJobModal" id="font_size_change">Create
+                        Jobs</button>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </center>
 
     <div class="container mt-4">
         <form method="GET" action="/">
@@ -222,7 +233,7 @@
                         <br>
                         <i class="fas fa-briefcase" ></i> ₹{{ job.salary_max }}PA
                     </p>
-                    <ul class="mb-3" style="font-size: 0.9em;" id="sizech">
+                    <ul class="mb-3" style="font-size: 0.7em;" id="sizech">
                         <li>{{ job.description[:80] }}...</li>
                     </ul>
                     <button class="btn btn-primary w-100">Apply Now</button>
